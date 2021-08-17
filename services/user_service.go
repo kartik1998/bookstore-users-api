@@ -6,5 +6,8 @@ import (
 )
 
 func CreateUser(user users.User) (*users.User, *errors.RestErr) {
+	if err := user.Validate(); err != nil {
+		return &user, err
+	}
 	return &user, nil
 }
